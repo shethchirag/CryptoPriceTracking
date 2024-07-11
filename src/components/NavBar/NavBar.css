@@ -1,0 +1,48 @@
+.navbar ul {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+}
+.navbar li {
+  list-style: none;
+  cursor: pointer;
+}
+.navbar {
+  display: flex;
+  justify-content: space-evenly;
+  border-bottom: 2px solid;
+  padding-block: 20px;
+}
+
+.nav-right select {
+  padding: 10px;
+  border-radius: 10px;
+  background: transparent;
+  color: white;
+  border: 1px solid;
+  cursor: pointer;
+}
+.nav-right option {
+  background-color: #09005c;
+  color: white;
+  cursor: pointer;
+}
+.nav-right button {
+  background-color: white;
+  padding: 10px;
+  border-radius: 10px;
+  border: navajowhite;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 11px;
+  cursor: pointer;
+  font-size: 17px;
+  font-weight: 400;
+}
+.nav-right {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  gap: 20px;
+}
