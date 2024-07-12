@@ -1,4 +1,5 @@
 import { createContext, useEffect, useState } from "react";
+import useFetchData from "../../hook/useFetchData";
 
 export const CoinContext = createContext();
 
@@ -9,30 +10,23 @@ const CoinContextProvider = (props) => {
     symbol: "$",
   });
 
-  const fetchCoinData = () => {
-    const options = {
-      method: "GET",
-      headers: {
-        accept: "application/json",
-        "x-cg-demo-api-key": import.meta.env.VITE_SOME_KEY,
-      },
-    };
+  const [data, loading] = useFetchData(
+    `https://api.coingecko.com/api/v3/coins/markets?vs_currency=${currency.name}`
+  );
+  console.log(allCoin);
 
-    fetch(
-      `https://api.coingecko.com/api/v3/coins/markets?vs_currency=${currency.name}`,
-      options
-    )
-      .then((response) => response.json())
-      .then((response) => setAllCoin(response))
-      .catch((err) => console.error(err));
+  const setCoinData = () => {
+    setAllCoin(data);
   };
+
   useEffect(() => {
-    fetchCoinData();
-  }, [currency]);
+    setCoinData();
+  }, [data]);
   const contextValue = {
     allCoin,
     setCurrency,
     currency,
+    loading,
   };
 
   return (
